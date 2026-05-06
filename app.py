@@ -12,7 +12,7 @@ st.set_page_config(page_title="PhonePe Pulse Insights", layout="wide", initial_s
 @st.cache_resource
 def init_connection():
     try:
-        engine = sqlalchemy.create_engine(f'mysql+mysqlconnector://{config.DB_USER}:{config.DB_PASSWORD}@{config.DB_HOST}/{config.DB_NAME}')
+        engine = sqlalchemy.create_engine(f'mysql+mysqlconnector://{config.DB_USER}:{config.DB_PASSWORD_ENCODED}@{config.DB_HOST}/{config.DB_NAME}')
         return engine
     except Exception as e:
         st.error(f"Error connecting to database: {e}")

@@ -1,4 +1,4 @@
 DB_HOST = "localhost"
 DB_USER = "root"
-DB_PASSWORD = "your_password"  # user fills this in
+DB_PASSWORD = "your_mysql_password_here"
 DB_NAME = "phonepe_pulse"

@@ -3,3 +3,7 @@ __pycache__/
 .env
 pulse/
 .ipynb_checkpoints/
+config.py
+access-token.txt
+*.pkl
+*.json
