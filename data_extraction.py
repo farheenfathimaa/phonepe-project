@@ -1,3 +1,4 @@
+import urllib.parse
 import os
 import json
 import pandas as pd
@@ -325,7 +326,7 @@ def load_to_mysql(dataframes_dict):
     print("Connecting to MySQL Database...")
     try:
         # Create engine
-        engine = create_engine(f'mysql+mysqlconnector://{config.DB_USER}:{config.DB_PASSWORD_ENCODED}@{config.DB_HOST}/{config.DB_NAME}')
+        engine = create_engine(f'mysql+mysqlconnector://{config.DB_USER}:{urllib.parse.quote_plus(config.DB_PASSWORD)}@{config.DB_HOST}/{config.DB_NAME}')
         
         for table_name, df in dataframes_dict.items():
             if df is not None and not df.empty:
