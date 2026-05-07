@@ -1,74 +1,96 @@
-# PhonePe Transaction Insights
+# PhonePe Pulse: Data Visualization & Exploration
 
-## Project Overview
-This project is an end-to-end data science pipeline that extracts data from the PhonePe Pulse GitHub repository, transforms it, loads it into a MySQL database, and visualizes the insights using an interactive Streamlit dashboard. It also includes comprehensive Exploratory Data Analysis (EDA) and Machine Learning (ML) predictive modeling using Jupyter Notebooks.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B.svg)](https://streamlit.io/)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1.svg)](https://www.mysql.com/)
 
-## Technologies Used
-- **Python 3.x**
-- **Data Manipulation:** pandas, numpy
-- **Data Visualization:** matplotlib, seaborn, plotly, folium
-- **Database:** MySQL, sqlalchemy, mysql-connector-python
-- **Machine Learning:** scikit-learn, xgboost, joblib, shap
-- **Web App / Dashboard:** Streamlit, streamlit-option-menu
-- **Version Control:** Git, gitpython, PyGithub
+## 📝 Project Overview
+This project is a comprehensive data science solution that extracts, processes, and visualizes data from the **PhonePe Pulse** GitHub repository. It automates the entire pipeline from raw JSON data extraction to interactive dashboard deployment, providing deep insights into India's digital payment landscape.
 
-## Features
-1. **Data Extraction:** Automated cloning and parsing of PhonePe Pulse JSON data.
-2. **Database Schema:** Structured MySQL schema with 9 tables matching PhonePe Pulse categories.
-3. **EDA Notebook:** In-depth exploratory data analysis with various visualizations and business insights.
-4. **ML Notebook:** Machine learning models (Random Forest, XGBoost, Linear Regression) predicting transaction behavior with hyperparameter tuning.
-5. **Streamlit Dashboard:** Interactive application with multiple pages for analyzing transactions, users, insurance, and top performers.
-6. **Automated GitHub Deployment:** Script to programmatically push the completed project to a new GitHub repository.
+### Key Highlights:
+- **End-to-End Pipeline:** Automated Extraction (ETL) -> Storage (MySQL) -> Analysis (EDA/ML) -> Visualization (Streamlit).
+- **Relational Storage:** Data is structured into 9 normalized SQL tables for high-performance querying.
+- **Advanced Analytics:** 20+ meaningful visualizations and predictive modeling for transaction trends.
+- **Interactive Dashboard:** User-friendly interface with multi-dimensional filtering.
 
-## Step-by-Step Setup Instructions
+## 🚀 Dashboard Preview
+Below are some highlights from the interactive Streamlit application:
 
-### 1. Install Requirements
-Create a virtual environment (optional but recommended) and install the required dependencies:
+| Home Page | Transaction Analysis |
+| :---: | :---: |
+| ![Home](screenshots/1.png) | ![Transaction](screenshots/2.png) |
+
+| User Analysis | Insurance Analysis |
+| :---: | :---: |
+| ![User](screenshots/3.png) | ![Insurance](screenshots/4.png) |
+
+| Top Performers |
+| :---: |
+| ![Top Performers](screenshots/5.png) |
+
+## 🛠️ Technologies Used
+- **Logic:** Python
+- **Data:** pandas, numpy, sqlalchemy
+- **Visualization:** Plotly, Seaborn, Matplotlib
+- **Database:** MySQL
+- **ML:** scikit-learn, XGBoost
+- **Frontend:** Streamlit
+
+## 📁 Project Structure
+```text
+├── app.py                     # Streamlit dashboard entry point
+├── EDA_Notebook.ipynb         # Detailed exploratory data analysis
+├── ML_Notebook.ipynb          # Machine learning training pipeline
+├── data_extraction.py         # ETL script for PhonePe JSON data
+├── sql_schema.sql             # MySQL database schema definition
+├── config.py                  # Database configuration (git-ignored)
+├── requirements.txt           # List of Python dependencies
+├── screenshots/               # Application preview images
+└── README.md                  # Project documentation
+```
+
+## ⚙️ Setup & Installation
+
+### 1. Database Configuration
+1. Install MySQL Server and create a database named `phonepe_pulse`.
+2. Execute the schema script:
+   ```sql
+   SOURCE sql_schema.sql;
+   ```
+3. Create a `config.py` file in the root directory (this is ignored by Git for security):
+   ```python
+   import urllib.parse
+   DB_HOST = "localhost"
+   DB_USER = "root"
+   DB_PASSWORD = "your_password"
+   DB_PASSWORD_ENCODED = urllib.parse.quote_plus(DB_PASSWORD)
+   DB_NAME = "phonepe_pulse"
+   ```
+
+### 2. Environment Setup
 ```bash
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-### 2. Configure Database Credentials
-Edit the `config.py` file to include your MySQL credentials:
-```python
-DB_HOST = "localhost"
-DB_USER = "root"
-DB_PASSWORD = "your_mysql_password"
-DB_NAME = "phonepe_pulse"
-```
-
-### 3. Setup Database Schema
-Run the provided SQL script in your MySQL environment to create the database and tables:
-```sql
-SOURCE sql_schema.sql;
-```
-Alternatively, copy the contents of `sql_schema.sql` into your MySQL workbench and execute.
-
-### 4. Run Data Extraction
-Execute the data extraction script to clone the PhonePe repository, parse the JSON files, and load the data into your MySQL database. This will take a few minutes.
+### 3. Data Ingestion (ETL)
+Run the extraction script to populate your database with the latest PhonePe Pulse data:
 ```bash
 python data_extraction.py
 ```
 
-### 5. Explore Jupyter Notebooks
-Run Jupyter Notebook or JupyterLab to view the analysis and machine learning models.
+### 4. Running the Application
 ```bash
-jupyter notebook
-```
-- Open `EDA_Notebook.ipynb` to view the Exploratory Data Analysis. Fill in the Markdown "Answer Here" cells with your own observations.
-- Open `ML_Notebook.ipynb` to view the Machine Learning pipeline.
-
-### 6. Launch the Streamlit Dashboard
-Run the Streamlit application to interact with the visualizations:
-```bash
+# Launch the dashboard
 streamlit run app.py
 ```
 
-### 7. Upload to GitHub
-To push your project to a new GitHub repository automatically, run the setup script. It will ask for your GitHub Personal Access Token if it isn't in an `access-token.txt` file or environment variable.
-```bash
-python setup_github_repo.py
-```
+## 📊 Analytics Summary
+- **EDA:** Uncovered regional growth patterns and dominant transaction types (P2P, Merchant).
+- **ML:** Trained XGBoost and Random Forest models to predict transaction volumes with high accuracy (~0.97 R2).
 
-## Dataset Reference
+## 🔗 Dataset Reference
 - [PhonePe Pulse Data Repository](https://github.com/PhonePe/pulse)
+
+---
+*Developed by Farheen Fathima*

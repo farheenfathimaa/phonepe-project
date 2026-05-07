@@ -13,7 +13,7 @@ st.set_page_config(page_title="PhonePe Pulse Insights", layout="wide", initial_s
 @st.cache_resource
 def init_connection():
     try:
-        engine = sqlalchemy.create_engine(f'mysql+mysqlconnector://{config.DB_USER}:{urllib.parse.quote_plus(config.DB_PASSWORD)}@{config.DB_HOST}/{config.DB_NAME}')
+        engine = sqlalchemy.create_engine(f'mysql+mysqlconnector://{config.DB_USER}:{config.DB_PASSWORD_ENCODED}@{config.DB_HOST}/{config.DB_NAME}')
         return engine
     except Exception as e:
         st.error(f"Error connecting to database: {e}")
@@ -88,7 +88,7 @@ if selected == "Home":
     - **Insurance Analysis:** Explore insurance purchase trends on PhonePe.
     - **Top Performers:** Discover the top states, districts, and pin codes based on volume and value.
     """)
-    st.image("https://www.phonepe.com/pulse/static/images/hero-illustration.svg", use_column_width=True)
+    st.image("hero_image.png", use_column_width=True)
 
 # Transaction Analysis Page
 elif selected == "Transaction Analysis":

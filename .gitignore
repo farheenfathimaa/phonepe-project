@@ -1,12 +1,45 @@
+# Python
 __pycache__/
-*.pyc
-.env
-pulse/
-.ipynb_checkpoints/
-config.py
-access-token.txt
-*.pkl
-*.json
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Database and Credentials
 config.py
 access-token.txt
+
+# Project Specific
+pulse/
+*.pkl
+hero_image.png
+
+# User Requested Files
+"project title.docx"
+"project title.pptx"
+"Phone Pe.docx"
+"Phone Pe.pptx"
+
+# OS generated files
+.DS_Store
+Thumbs.db
